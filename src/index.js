@@ -1,9 +1,5 @@
 import { NativeModules } from 'react-native';
-
-import { CameraOptions, ImageLibraryOptions, Callback } from './types';
-export * from './types';
-
-const DEFAULT_OPTIONS: CameraOptions = {
+const DEFAULT_OPTIONS = {
   mediaType: 'photo',
   videoQuality: 'high',
   quality: 1,
@@ -14,8 +10,7 @@ const DEFAULT_OPTIONS: CameraOptions = {
   durationLimit: 0,
   cameraType: 'back'
 };
-
-export function launchCamera(options: CameraOptions, callback: Callback) {
+export function launchCamera(options, callback) {
   if (typeof callback !== 'function') {
     console.error("Send proper callback function, check API");
     return;
@@ -27,7 +22,7 @@ export function launchCamera(options: CameraOptions, callback: Callback) {
   );
 }
 
-export function openCropper(options: ImageLibraryOptions, callback: Callback) {
+export function openCropper(options, callback) {
   if (typeof callback !== 'function') {
     console.error("Send proper callback function, check API");
     return;
@@ -40,8 +35,8 @@ export function openCropper(options: ImageLibraryOptions, callback: Callback) {
 }
 
 export function launchImageLibrary(
-  options: ImageLibraryOptions,
-  callback: Callback,
+  options,
+  callback,
 ) {
   if (typeof callback !== 'function') {
     console.error("Send proper callback function, check API");
