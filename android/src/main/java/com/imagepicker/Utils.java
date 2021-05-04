@@ -196,8 +196,6 @@ public class Utils {
             b = Bitmap.createScaledBitmap(b, newDimens[0], newDimens[1], true);
             String originalOrientation = getOrientation(uri, context);
             String extension=getFileExtension(options.outputFormat,mimeType);
-            Log.w("debug",extension);
-            Log.w("debug1",options.outputFormat);
            File file = createFile(context,extension);
             OutputStream os = context.getContentResolver().openOutputStream(Uri.fromFile(file));
             b.compress(getBitmapCompressFormat(extension), options.quality, os);
