@@ -275,11 +275,16 @@ public class Utils {
     }
 
     static int getDuration(Uri uri, Context context) {
+        try{
         MediaMetadataRetriever m = new MediaMetadataRetriever();
         m.setDataSource(context, uri);
         int duration = Math.round(Float.parseFloat(m.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION))) / 1000;
         m.release();
         return duration;
+        }catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     static Bitmap.CompressFormat getBitmapCompressFormat(String mimeType) {
