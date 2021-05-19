@@ -325,6 +325,7 @@ public class Utils {
         switch (mimeType) {
             case "image/jpeg": return "jpg";
             case "image/png": return "png";
+            case "audio/mpeg": return "mp3";
         }
         return "jpg";
     }
