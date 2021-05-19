@@ -257,6 +257,20 @@ public class Utils {
             return 0;
         }
     }
+    static String getUriStringFromUri(Uri uri) {
+        try {
+            return uri.toString();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    static String getFileNameFromUri(Uri uri) {
+        try {
+            return uri.getLastPathSegment();
+        } catch (Exception e) {
+            return "";
+        }
+    }
 
     static int getDuration(Uri uri, Context context) {
         MediaMetadataRetriever m = new MediaMetadataRetriever();
@@ -313,7 +327,11 @@ public class Utils {
     }
 
     static String getMimeTypeFromFileUri(Uri uri) {
+        try{
         return MimeTypeMap.getSingleton().getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(uri.toString()));
+        } catch (Exception e) {
+            return "image/jpeg";
+        }
     }
 
     // Since library users can have many modules in their project, we should respond to onActivityResult only for our request.
@@ -355,13 +373,11 @@ public class Utils {
     }
 
     static ReadableMap getResponseMap(Uri uri, Options options, Context context) {
-        String fileName = uri.getLastPathSegment();
         int[] dimensions = getImageDimensions(uri, context);
-
         WritableMap map = Arguments.createMap();
-        map.putString("uri", uri.toString());
+        map.putString("uri", getUriStringFromUri(uri));
         map.putDouble("fileSize", getFileSize(uri, context));
-        map.putString("fileName", fileName);
+        map.putString("fileName",getFileNameFromUri(uri));
         map.putString("type", getMimeTypeFromFileUri(uri));
         map.putInt("width", dimensions[0]);
         map.putInt("height", dimensions[1]);
@@ -373,12 +389,11 @@ public class Utils {
     }
 
     static ReadableMap getVideoResponseMap(Uri uri, Context context) {
-        String fileName = uri.getLastPathSegment();
         WritableMap map = Arguments.createMap();
         map.putString("uri", uri.toString());
         map.putDouble("fileSize", getFileSize(uri, context));
         map.putInt("duration", getDuration(uri, context));
-        map.putString("fileName", fileName);
+        map.putString("fileName",getFileNameFromUri(uri));
         return map;
     }
 
