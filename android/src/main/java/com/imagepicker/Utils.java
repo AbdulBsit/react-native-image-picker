@@ -375,31 +375,6 @@ public class Utils {
         }
     }
 
-    static ReadableMap getResponseMap(Uri uri, Options options, Context context) {
-        int[] dimensions = getImageDimensions(uri, context);
-        WritableMap map = Arguments.createMap();
-        map.putString("uri", getUriStringFromUri(uri));
-        map.putDouble("fileSize", getFileSize(uri, context));
-        map.putString("fileName",getFileNameFromUri(uri));
-        map.putString("type", getMimeTypeFromFileUri(uri));
-        map.putInt("width", dimensions[0]);
-        map.putInt("height", dimensions[1]);
-
-        if (options.includeBase64) {
-            map.putString("base64", getBase64String(uri, context));
-        }
-        return map;
-    }
-
-    static ReadableMap getVideoResponseMap(Uri uri, Context context) {
-        WritableMap map = Arguments.createMap();
-        map.putString("uri",  getUriStringFromUri(uri));
-        map.putDouble("fileSize", getFileSize(uri, context));
-        map.putInt("duration", getDuration(uri, context));
-        map.putString("fileName",getFileNameFromUri(uri));
-        return map;
-    }
-
     static ReadableMap getErrorMap(String errCode, String errMsg) {
         WritableMap map = Arguments.createMap();
         map.putString("errorCode", errCode);
@@ -414,4 +389,39 @@ public class Utils {
         map.putBoolean("didCancel", true);
         return map;
     }
+
+    static ReadableMap getResponseMap(Uri uri, Options options, Context context) {
+        if (uri == null) {
+            return getErrorMap(errOthers,"Cannot read path of file");
+        }
+        WritableMap map = Arguments.createMap();
+
+        int[] dimensions = getImageDimensions(uri, context);
+        
+        map.putString("uri", getUriStringFromUri(uri));
+        map.putDouble("fileSize", getFileSize(uri, context));
+        map.putString("fileName",getFileNameFromUri(uri));
+        map.putString("type", getMimeTypeFromFileUri(uri));
+        map.putInt("width", dimensions[0]);
+        map.putInt("height", dimensions[1]);
+
+        if (options.includeBase64) {
+            map.putString("base64", getBase64String(uri, context));
+        }
+        return map;
+    }
+
+    static ReadableMap getVideoResponseMap(Uri uri, Context context) {
+        if (uri == null) {
+            return getErrorMap(errOthers,"Cannot read path of file");
+        }
+        WritableMap map = Arguments.createMap();
+        map.putString("uri",  getUriStringFromUri(uri));
+        map.putDouble("fileSize", getFileSize(uri, context));
+        map.putInt("duration", getDuration(uri, context));
+        map.putString("fileName",getFileNameFromUri(uri));
+        return map;
+    }
+
+   
 }
