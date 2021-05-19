@@ -261,6 +261,7 @@ public class Utils {
         try {
             return uri.toString();
         } catch (Exception e) {
+            e.printStackTrace();
             return "";
         }
     }
@@ -268,6 +269,7 @@ public class Utils {
         try {
             return uri.getLastPathSegment();
         } catch (Exception e) {
+            e.printStackTrace();
             return "";
         }
     }
@@ -330,6 +332,7 @@ public class Utils {
         try{
         return MimeTypeMap.getSingleton().getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(uri.toString()));
         } catch (Exception e) {
+            e.printStackTrace();
             return "image/jpeg";
         }
     }
@@ -390,7 +393,7 @@ public class Utils {
 
     static ReadableMap getVideoResponseMap(Uri uri, Context context) {
         WritableMap map = Arguments.createMap();
-        map.putString("uri", uri.toString());
+        map.putString("uri",  getUriStringFromUri(uri));
         map.putDouble("fileSize", getFileSize(uri, context));
         map.putInt("duration", getDuration(uri, context));
         map.putString("fileName",getFileNameFromUri(uri));
