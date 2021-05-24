@@ -153,16 +153,16 @@ public class ImagePickerModule extends ReactContextBaseJavaModule implements Act
         Intent libraryIntent;
         if (this.options.pickVideo) {
             requestCode = REQUEST_LAUNCH_VIDEO_LIBRARY;
-            libraryIntent = new Intent(Intent.ACTION_PICK);
+            libraryIntent = new Intent(Intent.ACTION_GET_CONTENT);
             libraryIntent.setType("video/*");
         }
         else if (this.options.pickAudio) {
             requestCode = REQUEST_LAUNCH_AUDIO_LIBRARY;
-            libraryIntent = new Intent(Intent.ACTION_PICK);
+            libraryIntent = new Intent(Intent.ACTION_GET_CONTENT);
             libraryIntent.setType("audio/*");
         } else {
             requestCode = REQUEST_LAUNCH_IMAGE_LIBRARY;
-            libraryIntent = new Intent(Intent.ACTION_PICK);
+            libraryIntent = new Intent(Intent.ACTION_GET_CONTENT);
             libraryIntent.setType("image/*");
         }
         try {
