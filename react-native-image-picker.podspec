@@ -16,4 +16,15 @@ Pod::Spec.new do |s|
   s.source_files  = "ios/*.{h,m}"
 
   s.dependency 'React-Core'
+  s.dependency 'React-RCTImage'
+  s.dependency 'TOCropViewController'
+
+  s.subspec 'QBImagePickerController' do |qb|
+    qb.name             = "QBImagePickerController"
+    qb.source_files     = "ios/QBImagePicker/QBImagePicker/*.{h,m}"
+    qb.exclude_files    = "ios/QBImagePicker/QBImagePicker/QBImagePicker.h"
+    qb.resource_bundles = { "QBImagePicker" => "ios/QBImagePicker/QBImagePicker/*.{lproj,storyboard}" }
+    qb.requires_arc     = true
+    qb.frameworks       = "Photos"
+  end
 end

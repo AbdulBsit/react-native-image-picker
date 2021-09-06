@@ -1,6 +1,6 @@
 {
   "name": "react-native-image-picker",
-  "version": "3.5.0",
+  "version": "3.5.1",
   "description": "A React Native module that allows you to use native UI to select media from the device library or directly from the camera",
   "main": "src/index.js",
   "files": [
@@ -13,10 +13,6 @@
   ],
   "author": "Abdul Basit",
   "contributors": [
-    {
-      "name": "Raviraj",
-      "email": "ivarjar22@yahoo.com"
-    }
   ],
   "homepage": "https://github.com/AbdulBsit/react-native-image-picker",
   "license": "MIT",
