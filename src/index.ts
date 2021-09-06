@@ -5,7 +5,7 @@ const DEFAULT_OPTIONS: commonOptions = {
   quality: 1,
   forcejpg: false,
 };
-interface commonOptions {
+export interface commonOptions {
   mediaType: 'photo'
   cropping?: boolean
   cropperCircleOverlay?: boolean,
@@ -20,7 +20,7 @@ interface commonOptions {
   cropperStatusBarColor?: string
   freeStyleCropEnabled?: boolean
 }
-interface commonResponse {
+export interface commonResponse {
   didCancel?: boolean,
   errorCode?: any,
   errorMessage?: string,
