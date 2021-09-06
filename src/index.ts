@@ -5,6 +5,15 @@ const DEFAULT_OPTIONS: commonOptions = {
   quality: 1,
   forcejpg: false,
 };
+const DEFAULT_ANDROID_OPTIONS = {
+  videoQuality: 'high',
+  maxWidth: 0,
+  maxHeight: 0,
+  includeBase64: false,
+  saveToPhotos: false,
+  durationLimit: 0,
+  cameraType: 'back',
+}
 export interface commonOptions {
   mediaType: 'photo'
   cropping?: boolean
@@ -38,7 +47,9 @@ export async function openCropper(options: commonOptions, callback: (value: comm
   }
   if (Platform.OS === 'android') {
     NativeModules.ImagePickerManager.openCropper(
-      { ...DEFAULT_OPTIONS, ...options },
+      {
+        ...DEFAULT_ANDROID_OPTIONS, ...DEFAULT_OPTIONS, ...options
+      },
       callback,
     );
     return;
@@ -54,7 +65,7 @@ export async function openCropper(options: commonOptions, callback: (value: comm
         uri: result?.path,
       })
     } catch (err) {
-      callback({ didCancel: true, errorCode: true, errorMessage: err?.message })
+      callback({ didCancel: true, errorCode: true, errorMessage: (err as Error)?.message })
     }
 
   }
@@ -70,7 +81,10 @@ export async function launchImageLibrary(
   }
   if (Platform.OS === 'android') {
     NativeModules.ImagePickerManager.launchImageLibrary(
-      { ...DEFAULT_OPTIONS, ...options },
+      {
+        ...DEFAULT_ANDROID_OPTIONS,
+        ...DEFAULT_OPTIONS, ...options
+      },
       callback,
     );
     return;
@@ -87,7 +101,7 @@ export async function launchImageLibrary(
         uri: result?.path,
       })
     } catch (err) {
-      callback({ didCancel: true, errorCode: true, errorMessage: err?.message })
+      callback({ didCancel: true, errorCode: true, errorMessage: (err as Error).message })
     }
   }
 }
