@@ -847,10 +847,10 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
     // create temp file
     NSString *tmpDirFullPath = [self getTmpDirectory];
     NSString *filePath = [tmpDirFullPath stringByAppendingString:[[NSUUID UUID] UUIDString]];
-    if()
      if([[options valueForKey:@"forcejpg"] boolValue]){
-   filePath = [filePath stringByAppendingString:@".jpg"];
-    }else{
+    filePath = [filePath stringByAppendingString:@".jpg"];
+    }
+    else{
     filePath = [filePath stringByAppendingString:@".png"];
     }
    
