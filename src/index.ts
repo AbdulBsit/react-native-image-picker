@@ -71,10 +71,11 @@ export async function openCropper(options: commonOptions, callback: (value: comm
   }
 }
 
-export async function launchImageLibrary(
+export const launchImageLibrary = async (
   options: commonOptions,
   callback: (value: commonResponse) => void,
-) {
+) => {
+  console.log("debug Image Picker",NativeModules,NativeModules.ImageCropPicker)
   if (typeof callback !== 'function') {
     console.error("Send proper callback function, check API");
     return;
