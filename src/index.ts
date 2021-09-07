@@ -40,7 +40,7 @@ export interface commonResponse {
   height?: number
 }
 
-export async function openCropper(options: commonOptions, callback: (value: commonResponse) => void) {
+export const openCropper = async (options: commonOptions, callback: (value: commonResponse) => void) => {
   if (typeof callback !== 'function') {
     console.error("Send proper callback function, check API");
     return;
@@ -75,7 +75,7 @@ export const launchImageLibrary = async (
   options: commonOptions,
   callback: (value: commonResponse) => void,
 ) => {
-  console.log("debug Image Picker",NativeModules,NativeModules.ImageCropPicker)
+  console.log("debug Image Picker", NativeModules, NativeModules.ImageCropPicker)
   if (typeof callback !== 'function') {
     console.error("Send proper callback function, check API");
     return;

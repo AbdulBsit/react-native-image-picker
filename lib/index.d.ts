@@ -23,5 +23,5 @@ export interface commonResponse {
     width?: number;
     height?: number;
 }
-export declare function openCropper(options: commonOptions, callback: (value: commonResponse) => void): Promise<void>;
+export declare const openCropper: (options: commonOptions, callback: (value: commonResponse) => void) => Promise<void>;
 export declare const launchImageLibrary: (options: commonOptions, callback: (value: commonResponse) => void) => Promise<void>;
