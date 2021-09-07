@@ -69,7 +69,7 @@ RCT_EXPORT_MODULE();
             @"loadingLabelText": @"Processing assets...",
             @"mediaType": @"any",
             @"showsSelectedCount": @YES,
-            @"forceJpg": @NO,
+            @"forcejpg": @NO,
             @"sortOrder": @"none",
             @"cropperCancelText": @"Cancel",
             @"cropperChooseText": @"Choose"
@@ -578,7 +578,7 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
                                 @autoreleasepool {
                                     UIImage *imgT = [UIImage imageWithData:imageData];
                                     
-                                    Boolean forceJpg = [[self.options valueForKey:@"forceJpg"] boolValue];
+                                    Boolean forcejpg = [[self.options valueForKey:@"forcejpg"] boolValue];
                                     
                                     NSNumber *compressQuality = [self.options valueForKey:@"quality"];
                                     Boolean isLossless = (compressQuality == nil || [compressQuality floatValue] >= 0.8);
@@ -593,7 +593,7 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
                                     Boolean isKnownMimeType = [mimeType length] > 0;
                                     
                                     ImageResult *imageResult = [[ImageResult alloc] init];
-                                    if (isLossless && useOriginalWidth && useOriginalHeight && isKnownMimeType && !forceJpg) {
+                                    if (isLossless && useOriginalWidth && useOriginalHeight && isKnownMimeType && !forcejpg) {
                                         // Use original, unmodified image
                                         imageResult.data = imageData;
                                         imageResult.width = @(imgT.size.width);

@@ -205,7 +205,7 @@ public class ImagePickerModule extends ReactContextBaseJavaModule implements Act
     ///method crop
     void startCropping(final Activity activity, final Uri uri) {
         UCrop.Options cropOptions = new UCrop.Options();
-        if(options.forceJPG){
+        if(options.forcejpg){
             cropOptions.setCompressionFormat(Bitmap.CompressFormat.JPEG);
         }else{
         cropOptions.setCompressionFormat(Bitmap.CompressFormat.PNG);
@@ -233,7 +233,7 @@ public class ImagePickerModule extends ReactContextBaseJavaModule implements Act
         if (!options.disableCropperColorSetters) {
             configureCropperColors(cropOptions);
         }
-        fileUri=Uri.fromFile(createFile(reactContext, options.forceJPG ? "jpg" : "png"));
+        fileUri=Uri.fromFile(createFile(reactContext, options.forcejpg ? "jpg" : "png"));
         UCrop uCrop = UCrop.of(uri, fileUri).withOptions(cropOptions);
 
         if (options.ratioX > 0 && options.ratioY > 0) {

@@ -71,7 +71,7 @@
     result.width = @(image.size.width);
     result.height = @(image.size.height);
     result.image = image;
-    if([[options valueForKey:@"forceJpg"] boolValue]){
+    if([[options valueForKey:@"forcejpg"] boolValue]){
     result.mime = @"image/jpeg";
     }else{
     result.mime = @"image/png";
@@ -103,7 +103,7 @@
     }
     
     // convert image to jpeg representation
-     if([[options valueForKey:@"forceJpg"] boolValue]){
+     if([[options valueForKey:@"forcejpg"] boolValue]){
      result.data = UIImageJPEGRepresentation(result.image, [compressQuality floatValue]);
     }else{
       result.data = UIImagePNGRepresentation(result.image);

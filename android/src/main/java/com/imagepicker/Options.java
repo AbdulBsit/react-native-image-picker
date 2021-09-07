@@ -13,7 +13,7 @@ public class Options {
     int ratioY = 1;
     int width =0;
     int height=0;
-    Boolean forceJPG = false;
+    Boolean forcejpg = false;
     String outputFormat = null;
     Boolean cropping = false;
     String cropperActiveWidgetColor = null;
@@ -67,7 +67,7 @@ public class Options {
         ratioX = options.hasKey("ratioX") ? options.getInt("ratioX") : 0;
         ratioY = options.hasKey("ratioY") ? options.getInt("ratioY") : 0;
         cropping = options.hasKey("cropping") && options.getBoolean("cropping");
-        forceJPG = options.hasKey("forceJPG") && options.getBoolean("forceJPG");
+        forcejpg = options.hasKey("forcejpg") && options.getBoolean("forcejpg");
         cropperActiveWidgetColor = options.hasKey("cropperActiveWidgetColor") ? options.getString("cropperActiveWidgetColor") : null;
         cropperStatusBarColor = options.hasKey("cropperStatusBarColor") ? options.getString("cropperStatusBarColor") : null;
         cropperToolbarColor = options.hasKey("cropperToolbarColor") ? options.getString("cropperToolbarColor") : null;
